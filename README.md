@@ -64,7 +64,7 @@ checker config fileds:
 
 ## Implement
 
-![Govet process](file:./doc/imgs/govet-process.png)
+![Govet process](doc/imgs/govet-process.png)
 
 1. =Package= all packages of current project
 2. =Govet.toml= govet config file
