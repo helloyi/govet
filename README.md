@@ -35,6 +35,7 @@ Use "govet [command] --help" for more information about a command.
 ## Govet.yaml
 
 main config fileds:
+
 | field | type | default | meaning |
 | --- | ---  | --- | --- |
 | choke | integer | 20 | choked abort line number |
@@ -45,6 +46,7 @@ main config fileds:
 | checker | object array | nil | checkers define |
 
 *override* config fileds:
+
 | field | type | default | meaning |
 | --- | --- | --- | --- |
 | package | string | nil | sub package of overrided |
@@ -53,6 +55,7 @@ main config fileds:
 | disabled | string array | nil | disabled checkers |
                       
 checker config fileds:
+
 | field | type | meaning |
 | --- | --- | --- |
 | name | string | name of checker |
