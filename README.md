@@ -35,29 +35,29 @@ Use "govet [command] --help" for more information about a command.
 ## Govet.yaml
 
 main config fileds:
-field | type | default | meaning
------ | ---  | ------- | -------
-choke | integer | 20 | choked abort line number
-ignored | string array | nil | ignored sub packages or files
-enabled | string array | all checkers | enabled checkers
-disabled | string array | nil | disabled checkers
-override | object array | nil | overrided config of sub packages or files
-checker | object array | nil | checkers define
+| field | type | default | meaning |
+| --- | ---  | --- | --- |
+| choke | integer | 20 | choked abort line number |
+| ignored | string array | nil | ignored sub packages or files |
+| enabled | string array | all checkers | enabled checkers |
+| disabled | string array | nil | disabled checkers |
+| override | object array | nil | overrided config of sub packages or files |
+| checker | object array | nil | checkers define |
 
 *override* config fileds:
-field | type | default | meaning
------ | ---- | ------- | -------
-package | string | nil | sub package of overrided
-file | string | nil | sub file
-enabled | string array | all checkers | enabled checkers
-disabled | string array | nil | disabled checkers
+| field | type | default | meaning |
+| --- | --- | --- | --- |
+| package | string | nil | sub package of overrided |
+| file | string | nil | sub file
+| enabled | string array | all checkers | enabled checkers |
+| disabled | string array | nil | disabled checkers |
                       
 checker config fileds:
-field | type | meaning
------ | ---- | -------
-name | string | name of checker
-goastch | string | go ast matcher
-message | string | abort message
+| field | type | meaning |
+| --- | --- | --- |
+| name | string | name of checker |
+| goastch | string | go ast matcher |
+| message | string | abort message |
 
 ## Implement
 
