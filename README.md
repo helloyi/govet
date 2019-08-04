@@ -66,11 +66,11 @@ checker config fileds:
 
 ![Govet process](doc/imgs/govet-process.png)
 
-1. =Package= all packages of current project
-2. =Govet.toml= govet config file
-3. =Config Unmarshal= 
-4. =Parser & Type Checker= parser
-5. =Schedule= schedule checkers
-6. =Checks= checkers and checked packages/files
-7. =Vet= run checkers and complaint
-8. =Complaint Output= complaint messages
+1. `Package`: all packages of current project
+2. `Govet.toml`: govet config file
+3. `Config Unmarshal`: config parser
+4. `Parser & Type Checker`: go parser & type checker
+5. `Schedule`: schedule checkers
+6. `Checks`: checkers and checked packages/files
+7. `Vet`: run checkers and complaint
+8. `Complaint Output`: complaint messages
