@@ -1,12 +1,14 @@
 # Configurable Govet
- 
+
+**ALPHA VERSION**
+
 usually, there is a good choice that is `go tool vet`, `golint` or any more. But:
 
 + Cannot to select specific checks for subpackages or subfiles.
 + Cannot to add special (not provided by the tool) checks.
 + Check with toolset is slowly, like [gometalinter](https://github.com/alecthomas/gometalinter)
 + Not better engineering support.
-  
+
 so, it was coded.
 
 ## Usage
@@ -53,7 +55,7 @@ main config fileds:
 | file | string | nil | sub file
 | enabled | string array | all checkers | enabled checkers |
 | disabled | string array | nil | disabled checkers |
-                      
+
 checker config fileds:
 
 | field | type | meaning |
