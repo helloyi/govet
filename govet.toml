@@ -1,0 +1,97 @@
+# maximum number of complaining message
+#
+chock = 30
+
+# ignored files or packages that to check.
+#
+ignored = [
+  "github.com/helloyi/govet/cmd",
+  "github.com/helloyi/govet/config",
+  "github.com/helloyi/govet/vet",
+]
+
+# enabled checkers
+#
+# enabled = [
+#   "contextAsField",
+# ]
+
+# disabled checkes
+#
+# disabled = [
+#   "contexAsField",
+#   "emptySliceDecl",
+# ]
+
+# overrided config of subpackages or files
+#
+# [[override]]
+# package = "git.corpautohome.com/hefengcun/govet/vet"
+# enabled = [
+#   "contexAsField",
+# ]
+# [[override]]
+# file = "git.corpautohome.com/hefengcun/govet/vet/vet.go"
+# diabled = [
+#   "contexAsField",
+# ]
+
+# checkers define
+#
+[[checkers]]
+name    = 'contextAsField'
+goastch = '''
+hasDes structType has fieldList has @field anyof
+  isType "golang.org/x/net/context.Context" and
+  isType "context.Context"'''
+message = "don't add a Context member to a struct type"
+
+[[checkers]]
+name    = 'emptySliceDecl'
+goastch = 'hasDes @shortVarDecl has compositeLit allof has arrayType anything and isSize 0'
+message = 'when declaring an empty slice, prefer "var t []string"'
+
+[[checkers]]
+name    = 'dotImport'
+goastch = 'hasDes file has @importSpec hasName equals "."'
+message = 'should not use dot imports'
+
+[[checkers]]
+name    = 'underscoresPkgName'
+goastch = 'hasDes file @hasName allof unless hasSuffix "_test" and contains "_"'
+message = "don't use an underscore in package name"
+
+[[checkers]]
+name    = 'redundanRangeClause'
+goastch = 'hasDes rangeStmt @hasValue equals "_"'
+message = 'should omit 2nd value from range'
+
+[[checkers]]
+name    = 'globalErrorVar'
+goastch = '''
+hasDes file forDecls genDecl forSpecs @valueSpec allof
+  isType "error" and
+  forNames allof
+    not hasPrefix "err" and
+    not hasPrefix "Err"'''
+message = 'error var should start with "[Ee]rr"'
+
+[[checkers]]
+name    = 'underscoreReceiverName'
+goastch = 'hasDes FuncDecl @hasRecvName equals "_"'
+message = 'receiver name should not be an underscore, omit the name if it is unused'
+
+[[checkers]]
+name    = 'suitableReceiverName'
+goastch = 'hasDes FuncDecl @hasRecvName anyof equals "this" and equals "self"'
+message = '''receiver name should be a reflection of its identity; don\'t use generic names such as "this" or "self"'''
+
+[[checkers]]
+name    = 'incDec'
+goastch = 'hasDes @AssignStmt allof hasRhs equals 1 and anyof hasOperator "+=" and hasOperator "-="'
+message = 'should replace "+="/"-=" with "++"/"--"'
+
+[[checkers]]
+name    = 'errorReturn'
+goastch = 'hasDes FuncDecl hasType @hasResults allof last not isType "error" and forFields isType "error"'
+message = 'error should be the last type when returning multiple items'
